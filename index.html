@@ -1,11 +1,171 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>LBC Advisory</title>
-  </head>
-  <body>
-    <h1>LBC Advisory LLC</h1>
-    <p>Website setup in progress.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LBC Advisory LLC | Financial Clarity for Startups</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LBC Advisory LLC helps founders gain financial clarity through strategic accounting, bookkeeping, and advisory services in New Orleans and beyond.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-block">
+        <!-- Replace with an <img> if you have a logo file -->
+        <div class="logo-mark">LBC</div>
+        <div class="logo-text">
+          <span class="logo-name">LBC Advisory LLC</span>
+          <span class="logo-tagline">Where Startup Vision Meets Financial Clarity</span>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Financial clarity for founders who are ready to grow.</h1>
+          <p>
+            Financial clarity is the foundation of success. LBC Advisory partners with early-stage and growing
+            businesses to build reliable accounting infrastructure, sharpen reporting, and turn numbers into
+            confident decisions.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#contact">Schedule a conversation</a>
+            <a class="btn-secondary" href="#services">Explore services</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <h2>What we help you see clearly</h2>
+          <ul>
+            <li>Cash runway and burn</li>
+            <li>Revenue and margin trends</li>
+            <li>Budget vs. actual performance</li>
+            <li>Systems that scale with your growth</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section section-alt">
+      <div class="container">
+        <h2>Services</h2>
+        <p class="section-intro">
+          Strategic accounting and advisory support tailored to startups and small businesses.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <h3>Bookkeeping & Accounting Infrastructure</h3>
+            <p>
+              Clean, consistent books built on the right tools and workflows, so you can trust your numbers
+              and focus on the business.
+            </p>
+            <ul>
+              <li>Chart of accounts design</li>
+              <li>System setup and cleanup</li>
+              <li>Monthly bookkeeping processes</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Financial Reporting & Modeling</h3>
+            <p>
+              Clear, founder-friendly reporting and models that connect your strategy to the financial reality.
+            </p>
+            <ul>
+              <li>Monthly and quarterly reporting packages</li>
+              <li>Financial models for planning and fundraising</li>
+              <li>Scenario analysis and “what if” planning</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Forecasting & Advisory</h3>
+            <p>
+              Ongoing guidance to help you interpret the numbers, anticipate challenges, and make informed decisions.
+            </p>
+            <ul>
+              <li>Cash flow forecasting</li>
+              <li>Budgeting and reforecasting</li>
+              <li>Founder-focused advisory sessions</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container about-grid">
+        <div>
+          <h2>About LBC Advisory</h2>
+          <p>
+            LBC Advisory LLC was founded in 2026 to bridge the gap between startup vision and financial reality.
+            The firm focuses on giving founders the clarity and confidence they need to make decisions, talk to
+            investors, and build sustainable companies.
+          </p>
+          <p>
+            With a background in accounting and a deep understanding of early-stage operations, LBC Advisory
+            combines technical rigor with practical, founder-friendly communication.
+          </p>
+        </div>
+        <div class="about-panel">
+          <h3>What clients value</h3>
+          <ul>
+            <li>Clear, jargon-free explanations</li>
+            <li>Reliable, timely reporting</li>
+            <li>Systems that grow with the business</li>
+            <li>A partner who understands startup realities</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-alt">
+      <div class="container contact-grid">
+        <div>
+          <h2>Let’s talk about your numbers</h2>
+          <p>
+            Whether you’re cleaning up your books, preparing for a raise, or building your first budget,
+            LBC Advisory can help you get clear on where you are and where you’re headed.
+          </p>
+          <p>
+            Share a bit about your company and what you’re looking for, and we’ll follow up with next steps.
+          </p>
+        </div>
+        <div class="contact-panel">
+          <h3>Contact</h3>
+          <p class="contact-line">
+            Email:
+            <a href="mailto:info@lbcnola.com">info@lbcnola.com</a>
+          </p>
+          <p class="contact-line">
+            LinkedIn:
+            <a href="https://www.linkedin.com/company/lbc-advisory-llc" target="_blank" rel="noopener">
+              LBC Advisory LLC
+            </a>
+          </p>
+          <p class="contact-note">
+            Response times are typically within 1–2 business days.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> LBC Advisory LLC. All rights reserved.</span>
+      <span class="footer-location">Based in New Orleans, serving clients wherever they build.</span>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
 </html>
