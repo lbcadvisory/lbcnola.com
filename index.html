@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="LBC Advisory LLC helps founders gain financial clarity through strategic accounting, bookkeeping, and advisory services in New Orleans and beyond." />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/favicon.ico" />
   <link rel="stylesheet" href="/styles.css?v=20260301" />
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -29,54 +31,63 @@
   </nav>
 
   <main>
+
+    <!-- HERO (full width, no aside) -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
+      <div class="container">
+        <div class="hero-copy" style="max-width: 100%;">
           <h1>Financial clarity for founders who are ready to grow.</h1>
           <p>Financial clarity is the foundation of steady growth. I partner with early-stage and growing businesses to build reliable accounting infrastructure, sharpen reporting, and turn numbers into confident decisions.</p>
         </div>
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="section section-alt">
       <div class="container">
         <h2>Services</h2>
-        <p class="section-intro">I provide strategic accounting and advisory support tailored to startups and small businesses.</p>
 
         <div class="cards">
+
+          <!-- Accounting & Bookkeeping -->
           <article class="card">
-            <h3>Bookkeeping & Accounting Infrastructure</h3>
-            <p>I help businesses build clean, consistent books on the right tools and workflows, so you can trust your numbers and focus on the business.</p>
+            <h3>Accounting & Bookkeeping</h3>
             <ul class="purple-bullets">
+              <li>Monthly bookkeeping and account reconciliations</li>
+              <li>Clean-up and catch-up accounting</li>
+              <li>Ongoing accounting support and process improvement</li>
               <li>Chart of accounts design</li>
-              <li>System setup and cleanup</li>
-              <li>Monthly bookkeeping processes</li>
             </ul>
           </article>
 
+          <!-- Financial Reporting & Forecasting -->
           <article class="card">
-            <h3>Financial Reporting & Modeling</h3>
-            <p>I create founder-friendly reporting and models that connect strategy to financial reality.</p>
+            <h3>Financial Reporting & Forecasting</h3>
             <ul class="purple-bullets">
-              <li>Monthly and quarterly reporting packages</li>
-              <li>Financial models for planning and fundraising</li>
-              <li>Scenario analysis and “what if” planning</li>
+              <li>Monthly financial reporting packages</li>
+              <li>Cash flow tracking and forecasting</li>
+              <li>Budgeting and financial projections</li>
+              <li>Financial modeling to support growth and planning</li>
             </ul>
           </article>
 
+          <!-- Strategic Advisory -->
           <article class="card">
-            <h3>Forecasting & Advisory</h3>
-            <p>I provide ongoing guidance to help you interpret the numbers, anticipate challenges, and make informed decisions.</p>
+            <h3>Strategic Advisory</h3>
             <ul class="purple-bullets">
-              <li>Cash flow forecasting</li>
-              <li>Budgeting and reforecasting</li>
-              <li>Founder-focused advisory sessions</li>
+              <li>Designing scalable accounting processes and internal controls</li>
+              <li>Accounting technology and system recommendations</li>
+              <li>Financial workflow automation and operational improvements</li>
+              <li>Decision support for growth, hiring, and major investments</li>
+              <li>Ongoing strategic financial guidance for leadership teams</li>
             </ul>
           </article>
+
         </div>
       </div>
     </section>
 
+    <!-- ABOUT LARAE -->
     <section id="about" class="section about-contrast">
       <div class="container">
         <h2>About LaRae</h2>
@@ -87,38 +98,4 @@
 
         <p>Over the years, I’ve helped companies clean up their books, implement reliable accounting systems, build financial models, and turn financial data into clear strategic insight. I particularly enjoy bringing order to messy financials and creating processes that allow businesses to operate smoothly as they grow.</p>
 
-        <p>Today, through my firm, I work with small businesses and startups to establish strong financial systems, improve visibility into their numbers, and support better decision-making as they scale.</p>
-      </div>
-    </section>
-
-    <section id="contact" class="section section-alt">
-      <div class="container contact-grid">
-        <div>
-          <h2>Let’s talk about your numbers</h2>
-          <p>Whether you’re cleaning up your books, preparing for a raise, or building your first budget, I help small businesses and startups get clear on where they are and where they’re headed. This site is primarily informational for existing clients; use the contact panel for follow-up or scheduling when needed.</p>
-        </div>
-
-        <aside class="contact-panel" aria-labelledby="contact-panel-heading">
-          <h3 id="contact-panel-heading">Contact</h3>
-          <p class="contact-line">Email: <a href="mailto:larae@lbcnola.com">larae@lbcnola.com</a></p>
-          <p class="contact-line">LinkedIn: <a href="https://www.linkedin.com/company/lbc-advisory-llc" target="_blank" rel="noopener">LBC Advisory LLC</a></p>
-          <p class="contact-note">Response times are typically within 1–2 business days.</p>
-
-          <div style="margin-top:1rem; text-align:center;">
-            <a class="btn-cta" href="mailto:larae@lbcnola.com">Schedule a conversation</a>
-          </div>
-        </aside>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> LBC Advisory LLC. All rights reserved.</span>
-      <span class="footer-location">Based in New Orleans, serving clients wherever they build.</span>
-    </div>
-  </footer>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+        <p>Today, through my firm, I work with small businesses and startups to establish strong financial systems, improve visibility into their numbers, and support better
