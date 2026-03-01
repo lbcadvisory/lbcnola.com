@@ -219,3 +219,48 @@ h2{
 @media (min-width:1400px){
   .tag-badge{ font-size:1.05rem; padding:0.42rem 1.15rem; }
 }
+/* === Override — paste at end of styles.css === */
+
+/* show more of the watercolor and recenter the image */
+.site-header{
+  min-height: 260px;
+  padding: 2.5rem 0 1.25rem;
+  border-bottom: 1px solid rgba(88,82,88,0.06);
+  background-image: url('/assets/header.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+
+/* lighter near the top, stronger near the bottom for readable text area */
+.header-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.00) 0%,
+    rgba(255,255,255,0.28) 36%,
+    rgba(255,255,255,0.52) 64%,
+    rgba(255,255,255,0.78) 84%,
+    rgba(255,255,255,0.95) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ensure header content sits above the overlay */
+.header-inner{ position: relative; z-index: 1; }
+
+/* keep the tagline pill readable over the adjusted overlay */
+.tag-badge{
+  background: rgba(255,255,255,0.94);
+  color: #3b2b3a;
+  border: 1px solid rgba(59,43,58,0.06);
+  box-shadow: 0 10px 30px rgba(59,43,58,0.08);
+}
+
+/* responsive safety: smaller min-height on narrow screens */
+@media (max-width:900px){
+  .site-header{ min-height: 180px; padding: 1.6rem 0 0.9rem; }
+  .tag-badge{ font-size: 0.95rem; padding: 0.28rem 0.8rem; }
+}
