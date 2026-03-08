@@ -5,27 +5,481 @@
   <title>LBC Advisory LLC | Financial Clarity for Startups</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="LBC Advisory LLC helps founders gain financial clarity through strategic accounting, bookkeeping, and advisory services in New Orleans and beyond." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="/assets/favicon.ico" />
-  <link rel="stylesheet" href="/styles.css?v=20260301" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --ink:       #1a1219;
+      --plum:      #5c3058;
+      --plum-mid:  #7a4276;
+      --plum-soft: #e8dce7;
+      --cream:     #faf7f5;
+      --warm:      #f3ede9;
+      --rule:      rgba(92,48,88,.12);
+      --muted:     #7a6d78;
+      --container: 1120px;
+      --serif:     "Cormorant Garamond", Georgia, serif;
+      --sans:      "DM Sans", system-ui, sans-serif;
+      --ease:      cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── RESET / BASE ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: var(--container); margin: 0 auto; padding: 0 2rem; }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .site-header {
+      position: relative;
+      background-image: url('/assets/header.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      overflow: hidden;
+    }
+    .site-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(250,247,245,.08) 0%,
+        rgba(250,247,245,.55) 45%,
+        rgba(250,247,245,.92) 72%,
+        rgba(250,247,245,1) 100%
+      );
+      pointer-events: none;
+    }
+    .header-body {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      gap: 1.25rem;
+    }
+    .logo-wrap { display: flex; align-items: center; justify-content: center; }
+    .logo-image { height: 130px; width: auto; }
+    .tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.15rem;
+      color: var(--plum);
+      letter-spacing: .02em;
+      line-height: 1;
+    }
+
+    /* ── NAV ────────────────────────────────────────────── */
+    .main-nav {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: rgba(250,247,245,.82);
+      backdrop-filter: blur(8px);
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .main-nav a {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--plum);
+      padding: .9rem 2rem;
+      position: relative;
+      transition: color .2s var(--ease);
+    }
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; right: 50%;
+      height: 2px;
+      background: var(--plum);
+      transition: left .25s var(--ease), right .25s var(--ease);
+    }
+    .main-nav a:hover { color: var(--ink); }
+    .main-nav a:hover::after { left: 1.25rem; right: 1.25rem; }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      padding: 5.5rem 2rem 4.5rem;
+      background: #fff;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rule) 30%, var(--rule) 70%, transparent);
+    }
+    .hero-inner {
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--plum-mid);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--plum-mid);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      letter-spacing: -.01em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--plum);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    /* ── DIVIDER ────────────────────────────────────────── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: .5rem 0;
+      color: var(--plum-soft);
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .ornament-diamond {
+      width: 6px; height: 6px;
+      background: var(--plum-mid);
+      transform: rotate(45deg);
+      opacity: .45;
+    }
+
+    /* ── SERVICES ───────────────────────────────────────── */
+    .services-section {
+      padding: 5rem 2rem;
+      background: var(--cream);
+    }
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+    .section-label {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--plum-mid);
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: var(--plum-mid);
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--ink);
+      letter-spacing: -.01em;
+      line-height: 1.15;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .card {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      transition: background .25s var(--ease);
+    }
+    .card:hover { background: var(--warm); }
+    .card-num {
+      font-family: var(--serif);
+      font-size: .9rem;
+      font-style: italic;
+      color: var(--plum-mid);
+      opacity: .6;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .card h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card li {
+      font-size: .9rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      padding: .45rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+    }
+    .card li:last-child { border-bottom: none; }
+    .card li::before {
+      content: '—';
+      color: var(--plum-mid);
+      opacity: .5;
+      flex-shrink: 0;
+      font-size: .75rem;
+    }
+
+    /* ── ABOUT ──────────────────────────────────────────── */
+    .about-section {
+      padding: 5.5rem 2rem;
+      background: #fff;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text .section-title {
+      margin-bottom: 2rem;
+    }
+    .about-text p {
+      font-size: .975rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-photo-col { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+    .headshot-frame {
+      position: relative;
+      width: 100%;
+    }
+    .headshot-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px -8px 8px 8px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .headshot {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: saturate(.9);
+    }
+    .credential-badge {
+      text-align: center;
+    }
+    .credential-badge span {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--plum);
+      background: var(--plum-soft);
+      padding: .4rem 1rem;
+      border-radius: 1px;
+    }
+
+    /* ── CONTACT ────────────────────────────────────────── */
+    .contact-section {
+      padding: 5.5rem 2rem;
+      background: var(--ink);
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .contact-left .section-label { color: rgba(255,255,255,.45); }
+    .contact-left .section-label::before { background: rgba(255,255,255,.3); }
+    .contact-left .section-title { color: #fff; }
+    .contact-left p {
+      font-size: .95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.8;
+      margin-top: 1.25rem;
+    }
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .contact-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .contact-label {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+    .contact-value {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: #fff;
+    }
+    .contact-value a { transition: color .2s; }
+    .contact-value a:hover { color: var(--plum-soft); }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .75rem;
+      padding: 1rem 2rem;
+      background: var(--plum);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: background .25s var(--ease), transform .2s var(--ease);
+      align-self: flex-start;
+    }
+    .btn-cta:hover { background: var(--plum-mid); transform: translateY(-2px); }
+    .btn-cta-arrow {
+      font-size: 1rem;
+      line-height: 1;
+      transition: transform .2s var(--ease);
+    }
+    .btn-cta:hover .btn-cta-arrow { transform: translateX(3px); }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: #130f12;
+      padding: 1.5rem 2rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: .8rem;
+      color: rgba(255,255,255,.28);
+      letter-spacing: .02em;
+    }
+
+    /* ── LOAD ANIMATIONS ────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp .6s var(--ease) .1s both; }
+    .hero h1      { animation: fadeUp .7s var(--ease) .2s both; }
+    .hero p       { animation: fadeUp .7s var(--ease) .35s both; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo-col { flex-direction: row; align-items: flex-start; gap: 1.5rem; }
+      .headshot-frame { width: 140px; flex-shrink: 0; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 1.25rem; }
+      .hero { padding: 3.5rem 1.25rem 3rem; }
+      .services-section, .about-section, .contact-section { padding: 3.5rem 1.25rem; }
+      .logo-image { height: 90px; }
+      .main-nav a { padding: .85rem 1rem; font-size: .72rem; letter-spacing: .1em; }
+      .about-photo-col { flex-direction: column; align-items: center; }
+      .headshot-frame { width: 160px; }
+      .footer-inner { flex-direction: column; text-align: center; gap: .5rem; }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header" role="banner" aria-label="LBC Advisory header">
-    <div class="header-overlay" aria-hidden="true"></div>
-    <div class="container header-inner">
-      <div class="logo-centered">
-        <a href="/" class="logo-link" aria-label="LBC Advisory home">
-          <img src="/assets/logo.png" alt="LBC Advisory logo" class="logo-image">
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-body">
+      <div class="logo-wrap">
+        <a href="/" aria-label="LBC Advisory home">
+          <img src="/assets/logo.png" alt="LBC Advisory" class="logo-image">
         </a>
-        <div class="logo-tagline">
-          <span class="tag-badge">Where Startup Vision Meets Financial Clarity</span>
-        </div>
       </div>
+      <p class="tagline">Where Startup Vision Meets Financial Clarity</p>
     </div>
   </header>
 
+  <!-- NAV -->
   <nav class="main-nav" role="navigation" aria-label="Primary">
-    <div class="container nav-inner">
+    <div class="nav-inner">
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -33,22 +487,31 @@
   </nav>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero">
-      <div class="container">
-        <div class="hero-copy">
-          <h1>Financial clarity for founders who are ready to grow.</h1>
+      <div class="wrap">
+        <div class="hero-inner">
+          <p class="hero-eyebrow">Financial Advisory · New Orleans & Beyond</p>
+          <h1>Financial clarity for founders<br>who are ready to <em>grow.</em></h1>
           <p>Financial clarity is the foundation of steady growth. I partner with early-stage and growing businesses to build reliable accounting infrastructure, sharpen reporting, and turn numbers into confident decisions.</p>
         </div>
       </div>
     </section>
 
-    <section id="services" class="section section-alt">
-      <div class="container">
-        <h2>Services</h2>
-        <div class="cards">
+    <!-- SERVICES -->
+    <section id="services" class="services-section">
+      <div class="wrap">
+        <div class="section-header">
+          <p class="section-label">What I Offer</p>
+          <h2 class="section-title">Services designed for<br>growing businesses</h2>
+        </div>
+        <div class="cards-grid">
+
           <article class="card">
+            <span class="card-num">01</span>
             <h3>Strategic Advisory</h3>
-            <ul class="purple-bullets">
+            <ul>
               <li>Designing scalable accounting processes and internal controls</li>
               <li>Accounting technology and system recommendations</li>
               <li>Financial workflow automation and operational improvements</li>
@@ -58,10 +521,11 @@
           </article>
 
           <article class="card">
+            <span class="card-num">02</span>
             <h3>Accounting &amp; Bookkeeping</h3>
-            <ul class="purple-bullets">
+            <ul>
               <li>Monthly bookkeeping and account reconciliations</li>
-              <li>Clean-up and catch-up accounting to bring historical financials current and organized</li>
+              <li>Clean-up and catch-up accounting</li>
               <li>Ongoing accounting support and process improvement</li>
               <li>Chart of accounts design and financial system organization</li>
               <li>Audit readiness and compliance support</li>
@@ -69,53 +533,83 @@
           </article>
 
           <article class="card">
+            <span class="card-num">03</span>
             <h3>Financial Reporting &amp; Forecasting</h3>
-            <ul class="purple-bullets">
+            <ul>
               <li>Monthly financial reporting packages</li>
               <li>Cash flow tracking and forecasting</li>
-              <li>Budgeting and financial projections creation and maintenance</li>
+              <li>Budgeting and financial projections creation</li>
               <li>Financial modeling to support growth and planning</li>
-              <li>Sector-specific reporting designed to support operational decision-making such as utilization, margins, and efficiency metrics</li>
+              <li>Sector-specific reporting and efficiency metrics</li>
             </ul>
           </article>
+
         </div>
       </div>
     </section>
 
-    <section id="about" class="section about-contrast">
-      <div class="container about-grid">
-        <div class="about-text">
-          <h2>About LaRae</h2>
-          <p>I’m a CPA with a Master’s in Accountancy and more than a decade of experience helping businesses build strong financial foundations and scale with confidence.</p>
-          <p>I began my career in public accounting before moving into industry, where I spent over a decade managing accounting operations and financial reporting. Along the way, I discovered my passion for working directly with entrepreneurs and growing businesses.</p>
-          <p>Over the years, I’ve helped companies clean up their books, implement reliable accounting systems, build financial models, and turn financial data into clear strategic insight. I particularly enjoy bringing order to messy financials and creating processes that allow businesses to operate smoothly as they grow.</p>
-          <p>Today, through my firm, I work with small businesses and startups to establish strong financial systems, improve visibility into their numbers, and support better decision-making as they scale.</p>
-        </div>
-
-        <aside class="about-photo" aria-hidden="false">
-          <img src="/assets/headshot.jpg" alt="LaRae headshot" class="headshot">
-        </aside>
-      </div>
-    </section>
-
-    <section id="contact" class="section section-alt">
-      <div class="container contact-center">
-        <aside class="contact-panel" aria-labelledby="contact-panel-heading">
-          <h2 id="contact-panel-heading">Contact</h2>
-          <p class="contact-line">Email: <a href="mailto:larae@lbcnola.com">larae@lbcnola.com</a></p>
-          <p class="contact-line">LinkedIn: <a href="https://www.linkedin.com/company/lbc-advisory-llc" target="_blank" rel="noopener">LBC Advisory LLC</a></p>
-          <div class="contact-cta">
-            <a class="btn-cta" href="mailto:larae@lbcnola.com">Schedule a conversation</a>
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="section-label">About</p>
+            <h2 class="section-title">LaRae Crawford, CPA</h2>
+            <p>I'm a CPA with a Master's in Accountancy and more than a decade of experience helping businesses build strong financial foundations and scale with confidence.</p>
+            <p>I began my career in public accounting before moving into industry, where I spent over a decade managing accounting operations and financial reporting. Along the way, I discovered my passion for working directly with entrepreneurs and growing businesses.</p>
+            <p>Over the years, I've helped companies clean up their books, implement reliable accounting systems, build financial models, and turn financial data into clear strategic insight. I particularly enjoy bringing order to messy financials and creating processes that allow businesses to operate smoothly as they grow.</p>
+            <p>Today, through my firm, I work with small businesses and startups to establish strong financial systems, improve visibility into their numbers, and support better decision-making as they scale.</p>
           </div>
-        </aside>
+          <div class="about-photo-col">
+            <div class="headshot-frame">
+              <img src="/assets/headshot.jpg" alt="LaRae Crawford, CPA" class="headshot">
+            </div>
+            <div class="credential-badge">
+              <span>CPA · MAcc</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="wrap">
+        <div class="contact-inner">
+          <div class="contact-left">
+            <p class="section-label">Get in Touch</p>
+            <h2 class="section-title">Let's start a conversation</h2>
+            <p>Whether you're cleaning up historical books or building financial infrastructure from the ground up, I'd love to learn about your business and explore how I can help.</p>
+          </div>
+          <div class="contact-right">
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <span class="contact-value"><a href="mailto:larae@lbcnola.com">larae@lbcnola.com</a></span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value"><a href="https://www.linkedin.com/company/lbc-advisory-llc" target="_blank" rel="noopener">LBC Advisory LLC</a></span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Location</span>
+              <span class="contact-value">New Orleans &amp; Remote</span>
+            </div>
+            <a class="btn-cta" href="mailto:larae@lbcnola.com">
+              Schedule a conversation
+              <span class="btn-cta-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="wrap footer-inner">
       <span>© <span id="year"></span> LBC Advisory LLC. All rights reserved.</span>
-      <span class="footer-location">Based in New Orleans, serving clients wherever they build.</span>
+      <span>Based in New Orleans, serving clients wherever they build.</span>
     </div>
   </footer>
 
